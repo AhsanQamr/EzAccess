@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@1,700&family=Poppins&display=swap');
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+}
+
+.card{
+    width: 300px;
+    height: 320px;
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(183, 175, 175, 0.2); 
+}
+
+.card:hover{
+    box-shadow: 0 0 10px rgba(136, 132, 132, 0.5); 
+    z-index: 3;
+}
+
+
+
+.brand__name{
+    font-family: 'Lobster Two', cursive;
+    font-size: 1.2rem;
+    color: white;
+    user-select: none;
+    margin-top: 10px;
+    color: orange;
+}
+
+
+.card__image{
+    margin-top: 0;
+    height: 170px;
+    background-repeat: no-repeat;
+    background-position: 0;
+    transform: scale(0.3);
+    background-size: cover;
+}
+
+.product__detail{
+    
+    height: 130px;
+    background-color: #21222d;
+    border-radius: 0 40% 10px 10px;
+    padding: 0.8rem;
+    color: #fff;
+    font-family: Popins, sans-serif;
+}
+
+.product__rating{
+    font-size: 0.7rem;
+    color: #fdc00d;
+    user-select: none;
+
+}
+
+.card__buttons{
+    margin-top: 15px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price{
+    
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    user-select: none;
+}
+
+.discount__box{
+    margin-top: 10px;
+}
+
+
+.original__price{
+    font-size: 0.8rem;
+    color: #fff;
+    text-decoration: line-through;
+    user-select: none;
+    opacity: 0.7;
+}
+
+.discount__percent{
+    font-size: 0.9rem;
+    color: #fff;
+    user-select: none;
+    opacity: 0.9;
+    color: aquamarine;
+    margin: 0 0.5rem;
+}
+
+.btn__box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:10px;
+}
+
+.btn{
+    font-size: 22px;
+    color: #fff;
+    background-color: #21222d;
+    border: none;
+    cursor: pointer;
+}
+
+.view__button:hover{
+    color: #fdc00d;
+
+}
+
+.like__button:hover{
+    color: #fdc00d;
+}

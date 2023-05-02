@@ -1,0 +1,110 @@
+.header{
+    height: 40px;
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #232123;
+    letter-spacing: 0.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+.header__logo{
+    width: 100px;
+    object-fit: cover;
+    transform: scale(1.15);
+}
+
+
+
+.header__search{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    /* height: 30px; */
+    padding: 0.5rem;
+    margin: 0 auto;
+    flex-grow: 0.4;
+}
+
+.search__form{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    /* height: 30px; */
+    flex-grow: 1;
+    margin: 0 auto;
+}
+
+.header__searchInput{
+    border: none;
+    width: 100%;
+    outline: none;
+    font-size: 20px;
+}
+
+
+.header__nav{
+    display: flex;
+    /* nav items to the end of row */
+    /* justify-content: flex-end; */
+    margin: 0 15px;
+}
+
+.search__button{
+    font-size: 27px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+}
+
+.header__icon{  
+    color: white;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    font-size: 27px;
+}
+
+.header__icon:hover{
+    color:orange;
+}
+
+.header__text{
+    color: white;
+    font-size: 20px;
+}
+
+.header__option{
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+    color: white;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+}
+
+.header__optionLineOne{
+    font-size: 10px;
+    font-weight: 600;
+    /* remove spaces between characters */
+    letter-spacing: 0.1rem;
+}
+
+.header__optionLineTwo{
+    font-size: 13px;
+    font-weight: 800;
+    color: orange;
+    background : none;
+    border: none;
+    cursor: pointer;
+}
+

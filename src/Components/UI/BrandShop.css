@@ -1,0 +1,35 @@
+
+.brand__shop__container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.brand__shop{    
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.brand__shop h1{
+    font-family: 'Lobster Two', cursive;
+    font-size: 1.5rem;
+    color: #21222d;
+    user-select: none;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.brand__shop a {
+    font-family: 'Lobster Two', cursive;
+    font-size: 1rem;
+    color: #21222d;
+    user-select: none;
+    margin-top: 23px;
+    margin-right: 45px;
+}
+
+.brand__shop a:hover{
+    color: #fdc00d;
+}
