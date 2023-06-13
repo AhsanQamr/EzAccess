@@ -1,15 +1,15 @@
 import React from "react";
 import "./NormalCard.css";
-const NormalCard = () => {
+const NormalCard = (props) => {
     return (
         <>
             <div className="container">
                 <div className="card">
                     <div className="card__image">
-                        <img src="https://images.priceoye.pk/samsung-galaxy-a13-pakistan-priceoye-55vz9-270x270.webp" alt="image1" className="card-image" />
+                        <img src={props.image} alt="image1" className="card-img" />
                     </div>
                     <div className="product__detail">
-                        <span className="product__name">Samsung Galaxy A13</span>
+                        <span className="product__name">{props.name.slice(0, 25)}...</span>
                         <div className="product__rating">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
@@ -22,10 +22,10 @@ const NormalCard = () => {
                             </div>
                         <div className="card__buttons">
                             <div className="price">
-                                <span className="discount__price">Rs 10,000</span>
+                                <span className="discount__price">Rs {Math.floor(props.current_price)}</span>
                                 <div className="discount__box">
-                                <span className="original__price">Rs 12,000</span>
-                                <span className="discount__percent">20% off</span>
+                                <span className="original__price">Rs {Math.floor(props.original_price)}</span>
+                                <span className="discount__percent">{props.discount}</span>
                                 </div>
                             </div>
                             <div className="btn__box">

@@ -1,25 +1,174 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import './ContainerCards.css'
-import NormalCard from './NormalCard';
+import MainPageCards from './MainPageCards';
+import { Link } from 'react-router-dom';
 const ContainerCards = (props) => {
-    return (
-        <>
-            <div className='main__container' >
-                <div className='container__title'>
-                    <h1 >{props.title}</h1>
-                    <a href='/'>View More</a>
+
+    const [data, setData] = useState([]);
+    const [laptops, setLaptops] = useState([]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch("http://localhost:8080/daraz/getMobiles");
+            const data = await response.json();
+            setData(data);
+        };
+        fetchData();
+    }, []);
+
+    console.log(data);
+
+    useEffect(() => {
+        const fetchLaptops = async () => {
+            const response = await fetch("http://localhost:8080/daraz/getLaptops");
+            const data = await response.json();
+
+            setLaptops(data);
+        };
+        fetchLaptops();
+    }, []);
+    console.log(laptops);
+
+
+
+    const title = props.title;
+    const mobilesArray = Array.isArray(data) ? data : [];
+    const laptopArray = Array.isArray(laptops) ? laptops : [];
+
+    
+
+
+    if (title === 'Mobiles') {
+        return (
+            <>
+                <div className='main__container' >
+                    <div className='container__title'>
+                        <h1 >{props.title}</h1>
+                        <Link to='/mobiles'>
+                        <a href='/'>View More</a>
+                        </Link>
+                    </div>
+                    <div className='container__card'>
+                        {mobilesArray.slice(6,12).map((item) => {
+                            return (
+                                <MainPageCards
+                                    key={item._id}
+                                    id={item._id}
+                                    name={item.name}
+                                    original_price={item.originalPrice}
+                                    current_price={item.currentPrice}
+
+                                    image={item.productImg}
+                                    discount={item.discount}
+                                />
+                            );
+                        })}
+                        
+                    </div>
                 </div>
-                <div className='container__card'>
-                    <NormalCard />
-                    <NormalCard />
-                    <NormalCard />
-                    <NormalCard />
-                    <NormalCard />
-                    <NormalCard />
+            </>
+        );
+    }
+
+    if (title === 'Laptops') {
+        return (
+            <>
+                <div className='main__container' >
+                    <div className='container__title'>
+                        <h1 >{props.title}</h1>
+                        <Link to='/laptops'>
+                        <a href='/'>View More</a>
+                        </Link>
+                    </div>
+                    <div className='container__card'>
+
+                        {laptopArray.slice(12,18).map((item) => {
+                            return (
+                                <MainPageCards
+                                    key={item._id}
+                                    id={item._id}
+                                    name={item.name}
+                                    original_price={item.originalPrice}
+                                    current_price={item.price}
+                                    image={item.productImg}
+                                    discount={item.discount}
+                                />
+                            );
+                        })}
+
+                    </div>
                 </div>
-            </div>
-        </>
-    );
+            </>
+        );
+    }
+
+    const recommended = [...mobilesArray.slice(9, 13), ...laptopArray.slice(20, 24)];
+
+
+    if (title === 'Recommended') {
+        const recommendedArray = Array.isArray(recommended) ? recommended : [];
+        return (
+            <>
+                <div className='main__container' >
+                    <div className='container__title'>
+                        <h1 >{props.title}</h1>
+                        <a href='/'>View More</a>
+                    </div>
+                    <div className='container__card'>
+
+                        {recommendedArray.slice(0,7).map((item) => {
+                            return (
+                                <MainPageCards
+                                    key={item._id}
+                                    id={item._id}
+                                    name={item.name}
+                                    original_price={item.originalPrice}
+                                    current_price={item.currentPrice}
+                                    image={item.productImg}
+                                    discount={item.discount}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+            </>
+        );
+    }
+
+
+
+
+
+
+    // return (
+    //     <>
+    //         <div className='main__container' >
+    //             <div className='container__title'>
+    //                 <h1 >{props.title}</h1>
+    //                 <a href='/'>View More</a>
+    //             </div>
+    //             <div className='container__card'>
+
+    //                 {mobilesArray.slice(0,10).map((item) => {
+    //                     return (
+    //                         <MainPageCards
+    //                             key={item._id}
+    //                             id={item._id}
+    //                             name={item.name}
+    //                             original_price={item.originalPrice}
+    //                             current_price={item.currentPrice}
+
+    //                             image={item.productImg}
+    //                             discount={item.discount}
+    //                         />
+    //                     );
+    //                 })}
+                    
+    //             </div>
+    //         </div>
+    //     </>
+    // );
 };
 
 export default ContainerCards;

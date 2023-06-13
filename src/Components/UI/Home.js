@@ -1,10 +1,12 @@
 import React from "react";
-import Image1 from "../../Assets/pexels-veeterzy-303383.jpg";
+import Image1 from "../../Assets/amazon.jpg";
 import "./Home.css";
 import ContainerCards from "./Cards/ContainerCards";
 import home_image from "../../Assets/home_img.png";
 import BrandShop from "./BrandShop";
-const Home = () => {
+
+
+const Home = (props) => {
     return (
         <>
             <div className="home">        
@@ -15,7 +17,7 @@ const Home = () => {
             <hr />
             <hr />
             <img src={home_image} alt="home_image" className="home__image" />
-            <ContainerCards title="Mobiles" />
+            <ContainerCards title="Mobiles"   />
             <hr />
             <hr />
             <BrandShop />
