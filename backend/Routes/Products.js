@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const {getMobiles, getLaptops, getTablets, getAccessories, getWatches } = require('../Controllers/Products')
+const {getMobiles, getLaptops, getTablets, getAccessories, getWatches,  getProduct} = require('../Controllers/Products')
 
 // GET  api/productRoute/status/
 router.get('/status',(req,res) => {
@@ -35,7 +35,10 @@ router.get('/getWatches', async (req,res) => {
     const watches = await getWatches(req,res)
 })
 
-
+// GET  api/productRoute/watches/:id
+router.get('/:category/:id', async (req,res) => {
+    const product = await getProduct(req,res)
+})
 
 module.exports = router
 

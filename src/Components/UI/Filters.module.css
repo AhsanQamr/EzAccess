@@ -1,0 +1,9 @@
+.websites label{
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.websites h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+}

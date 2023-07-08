@@ -55,7 +55,7 @@
 .product__detail{
     
     height: 130px;
-    background-color: #21222d;
+    background-color: #3e3e3e;
     border-radius: 0 40% 10px 10px;
     padding: 0.8rem;
     color: #fff;
@@ -117,7 +117,7 @@
 .btn{
     font-size: 22px;
     color: #fff;
-    background-color: #21222d;
+    background-color: transparent;
     border: none;
     cursor: pointer;
 }

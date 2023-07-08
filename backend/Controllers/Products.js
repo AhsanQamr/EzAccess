@@ -1,4 +1,5 @@
 const Product = require('../Modals/Products');
+const {ObjectId} = require('mongodb');
 
 
 const { MongoClient } = require('mongodb');
@@ -72,5 +73,28 @@ async function getWatches(req,res) {
 }
 
 
-module.exports = {  getMobiles, getLaptops, getTablets, getAccessories, getWatches }
+async function getProduct(req, res) {
+  try {
+    await client.connect();
+    const { category, id } = req.params;
+    const product = await client
+      .db()
+      .collection(category)
+      .findOne({ _id: new ObjectId(id), Category: category });
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.json(product);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+
+
+
+
+
+module.exports = {  getMobiles, getLaptops, getTablets, getAccessories, getWatches,  getProduct }
 

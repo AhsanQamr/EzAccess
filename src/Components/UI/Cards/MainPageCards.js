@@ -22,9 +22,9 @@ const MainPageCards = (props) => {
                             </div>
                         <div className="card__buttons">
                             <div className="price">
-                                <span className="discount__price">Rs {props.current_price}</span>
+                                <span className="discount__price">Rs {Math.floor(props.current_price)}</span>
                                 <div className="discount__box">
-                                <span className="original__price">Rs {props.original_price}</span>
+                                <span className="original__price">Rs {Math.floor(props.original_price)}</span>
                                 <span className="discount__percent">{props.discount}</span>
                                 </div>
                             </div>

@@ -58,7 +58,6 @@ const ContainerCards = (props) => {
                                     name={item.name}
                                     original_price={item.originalPrice}
                                     current_price={item.currentPrice}
-
                                     image={item.productImg}
                                     discount={item.discount}
                                 />
@@ -124,7 +123,7 @@ const ContainerCards = (props) => {
                                     id={item._id}
                                     name={item.name}
                                     original_price={item.originalPrice}
-                                    current_price={item.currentPrice}
+                                    current_price={item.currentPrice || item.price}
                                     image={item.productImg}
                                     discount={item.discount}
                                 />

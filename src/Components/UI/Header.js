@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../Assets/3.png";
 import "./Header.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
 
@@ -11,8 +11,10 @@ const Header = () => {
 
     return (
       <>
-        <div className="header">
+        <div className="header__main">
+        <Link to={"/"} >
           <img className="header__logo" src={logo} alt="logo" />
+        </Link>
           <div className="header__search">
             <form className="search__form">
               <input

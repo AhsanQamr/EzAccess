@@ -15,10 +15,6 @@ import Row from "./Components/UI/Row";
 
 function MainPage() {
 
-
-
-
-
   return (
     <>
       <div className="App">

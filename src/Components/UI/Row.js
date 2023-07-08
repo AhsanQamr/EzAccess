@@ -1,6 +1,4 @@
 import React from "react";
-import { useState } from "react";
-import SideBar from "./SideBar";
 import "./Row.css";
 import { Link } from "react-router-dom";
 
@@ -9,16 +7,7 @@ const Row = () => {
 
     return (
         <>
-            <div className="row">
-                <div className="row__menu">
-                
-                    <button className="row__option__button" >
-                        <span>
-                            <i className="bi bi-list"></i>
-                            <span className="small__text">All</span>
-                        </span>
-                    </button>
-                </div>
+            <div className="row__main">
                 <div className="row__container">
                     <div className="row__option">
                     <Link to="/mobiles">
@@ -55,6 +44,11 @@ const Row = () => {
                         </button>
                     </Link>
                     </div>
+                    <Link to="/comparison">
+                        <button className="row__option__btn">
+                            Comparison
+                        </button>
+                    </Link>
                 </div>
             </div>
             {/* <SideBar /> */}
