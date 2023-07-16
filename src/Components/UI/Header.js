@@ -20,7 +20,7 @@ const Header = () => {
               <input
                 className="header__searchInput"
                 type="search"
-                placeholder="Search..."
+                placeholder="Type your query here..."
               />
               <button type="submit" className="search__button">
                 <i className="bi bi-search"></i>

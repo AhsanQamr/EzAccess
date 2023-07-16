@@ -11,6 +11,11 @@
     object-fit: cover;
     background-color: white;
 }
+
+hr{
+    clear: both;
+    visibility: hidden;
+}
   
 
   

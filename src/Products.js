@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import Footer from "./Components/UI/Footer";
 import Header from "./Components/UI/Header";
 import Row from "./Components/UI/Row";
-import Product from "./Components/UI/Product";
+import Product from "./Components/Products/Product";
 
 
 
@@ -79,7 +79,7 @@ function Products(props) {
           <div className="App">
             <Header />
             <Row />
-            <Product category = {props.category} product={data} laptops = {laptops} tablets = {tablets} watches={watches} accessories={accessories} />
+            <Product category = {props.category} product={data} laptops = {laptops} tablets = {tablets} watches={watches} accessories={accessories}  />
             <Footer />
           </div>
         </>

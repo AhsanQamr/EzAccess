@@ -6,6 +6,8 @@ import home_image from "../../Assets/home_img.png";
 import BrandShop from "./BrandShop";
 
 
+
+
 const Home = (props) => {
     return (
         <>
@@ -17,6 +19,7 @@ const Home = (props) => {
             <hr />
             <hr />
             <img src={home_image} alt="home_image" className="home__image" />
+            <hr />
             <ContainerCards title="Mobiles"   />
             <hr />
             <hr />

@@ -30,7 +30,6 @@ const BrandShop = () => {
                 <img src="https://static.priceoye.pk/images/brands/svg/oneplus.svg" alt="oneplus_brand" />
                 </a>
             </div>
-            
         </>
     );
 };

@@ -91,10 +91,49 @@ async function getProduct(req, res) {
   }
 }
 
+async function getBrandProducts(req, res) {
+  try {
+    await client.connect();
+    const {category, brandName} = req.params;
+    //console.log(category, brandName);
+    const products = await client
+      .db()
+      .collection(category)
+      .find({ brandName: brandName })
+      .toArray();
+    if (!products) {
+      return res.status(404).json({ error: 'Products not found' });
+    }
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+async function getDBProducts(req, res) {
+  try {
+    await client.connect();
+    const {category} = req.params;
+    //console.log(category, brandName);
+    const products = await client
+      .db()
+      .collection(category)
+      .find({})
+      .toArray();
+    if (!products) {
+      return res.status(404).json({ error: 'Products not found' });
+    }
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
 
 
 
 
 
-module.exports = {  getMobiles, getLaptops, getTablets, getAccessories, getWatches,  getProduct }
+module.exports = {  getMobiles, getLaptops, getTablets, getAccessories, getWatches,  getProduct, getBrandProducts }
 

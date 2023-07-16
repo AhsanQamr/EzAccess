@@ -7,12 +7,6 @@ import Row from "./Components/UI/Row";
 // this is main page which only includes header row and home and footer
 // so that other pages styles are not affected
 
-
-
-
-
-
-
 function MainPage() {
 
   return (

@@ -51,6 +51,7 @@ const ContainerCards = (props) => {
                     </div>
                     <div className='container__card'>
                         {mobilesArray.slice(6,12).map((item) => {
+                            console.log(item.Category)
                             return (
                                 <MainPageCards
                                     key={item._id}
@@ -60,6 +61,7 @@ const ContainerCards = (props) => {
                                     current_price={item.currentPrice}
                                     image={item.productImg}
                                     discount={item.discount}
+                                    category={item.Category}
                                 />
                             );
                         })}
@@ -92,6 +94,7 @@ const ContainerCards = (props) => {
                                     current_price={item.price}
                                     image={item.productImg}
                                     discount={item.discount}
+                                    category = {item.Category}
                                 />
                             );
                         })}
@@ -126,6 +129,7 @@ const ContainerCards = (props) => {
                                     current_price={item.currentPrice || item.price}
                                     image={item.productImg}
                                     discount={item.discount}
+                                    category={item.Category}
                                 />
                             );
                         })}
