@@ -36,6 +36,7 @@ const NormalCard = (props) => {
               <img
                 src={props.image}
                 alt="image1"
+                loading="lazy"
                 className={module.__card_img}
               />
             </div>
