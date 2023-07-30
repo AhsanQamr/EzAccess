@@ -42,7 +42,7 @@ const NormalCard = (props) => {
             </div>
             <div className={module.__product__detail__}>
               <span className={module.__product__name}>
-                {props.name.slice(0, 22)}...
+                {props.name ? props.name.slice(0, 22) : "Product Name"}...
               </span>
               <div className={module.__product__rating}>
                 <i class="bi bi-star-fill"></i>

@@ -27,7 +27,7 @@ const Product = (props) => {
     //const mobiles = props.product;
     // Ensure product is an array before using slice
     const mobiles = props.product;
-    console.log(mobiles);
+    console.log("mobiles", mobiles);
     const mobilesArray = Array.isArray(mobiles) ? mobiles : [];
     return (
       <>

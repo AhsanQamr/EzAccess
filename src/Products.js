@@ -19,8 +19,9 @@ function Products(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8080/daraz/getMobiles");
+      const response = await fetch("http://localhost:8080/api/mobiles");
       const data = await response.json();
+      console.log(data);
       setData(data);
     };
     fetchData();
@@ -30,7 +31,7 @@ function Products(props) {
 
   useEffect(() => {
     const fetchLaptops = async () => {
-      const response = await fetch("http://localhost:8080/daraz/getLaptops");
+      const response = await fetch("http://localhost:8080/api/laptops");
       const data = await response.json();
 
       setLaptops(data);
@@ -41,7 +42,7 @@ function Products(props) {
 
   useEffect(() => {
     const fetchTablets = async () => {
-      const response = await fetch("http://localhost:8080/daraz/getTablets");
+      const response = await fetch("http://localhost:8080/api/tablets");
       const data = await response.json();
 
       setTablets(data);
@@ -51,7 +52,7 @@ function Products(props) {
 
   useEffect(() => {
     const fetchWatches = async () => {
-      const response = await fetch("http://localhost:8080/daraz/getWatches");
+      const response = await fetch("http://localhost:8080/api/watches");
       const data = await response.json();
 
       setWatches(data);
@@ -61,7 +62,7 @@ function Products(props) {
 
   useEffect(() => {
     const fetchAccessories = async () => {
-      const response = await fetch("http://localhost:8080/daraz/getAccessories");
+      const response = await fetch("http://localhost:8080/api/accessories");
       const data = await response.json();
 
       setAccessories(data);

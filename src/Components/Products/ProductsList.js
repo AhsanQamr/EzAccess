@@ -126,18 +126,17 @@ const ProductsList = (products) => {
         );
       })}
 
-     {/* center the pagination div */}
-     
-      
+
+
+      <div className="container d-flex justify-content-center">
       <div className="row">
-        <div className="col d-flex justify-content-start ">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       </div>
+    </div>
     </>
   );
 };

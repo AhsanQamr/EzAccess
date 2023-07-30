@@ -1,35 +1,21 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors')
-
-const productRoutes = require('./Routes/Products');
-
-mongoose.connect('mongodb://localhost:27017/Daraz', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log("Connected to the database");
-}
-).catch(err => {
-    console.log("Cannot connect to the database", err);
-    process.exit();
-});
-
+const routes = require('./Routes/routes')
+const controller = require('./Controllers/controller');
 const app = express();
+const port = 8080;
+const {connectDatabases} = require('./db');
+const cors = require('cors');
+
+
+connectDatabases();
+
+app.use(express.json());
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    res.json({ "message": "Server is running" });
-});
+app.use('/api', routes);
 
-
-
-app.use('/daraz', productRoutes);
-
-let port = 8080;
 app.listen(port, () => {
-    console.log("Server is listening on port " + port);
-});
+    console.log(`Server listening at http://localhost:${port}`);
+    }
+);
