@@ -148,6 +148,33 @@ async function getAllAccessories(req, res) {
     }
 };
 
+async function getProductDetails(req, res) {
+    try {
+      const dbName = req.params.dbName;
+      const collectionName = req.params.collectionName;
+      const productId = req.params.productId;
+  
+      if (!dbName) {
+        return res.status(400).json({ error: "dbName is required" });
+      }
+  
+      if (!productId) {
+        return res.status(400).json({ error: "productId is required" });
+      }
+  
+      const productDetails = await productModel.getDetails(dbName, collectionName, productId);
+  
+      if (!productDetails) {
+        return res.status(404).json({ error: 'Product not found' });
+      }
+  
+      res.json(productDetails);
+    } catch (error) {
+      console.error('Error getting product details:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
+
 
 
 
@@ -163,5 +190,6 @@ module.exports = {
     getAllWatches,
     getAllTablets,
     getAllAccessories,
+    getProductDetails,
     
 };

@@ -8,7 +8,23 @@ const mobileModel = {
     getAll: async (dbName, collectionName) => {
         const mobiles = await createModel(dbName, collectionName).find({}).toArray();
         return mobiles;
-    }
+    },
+
+    getDetails: async (dbName, collectionName, productId) => {
+        const databases = ['Daraz', 'Priceoye', 'Symbios', 'Shophive', 'Qmart'];
+        
+        for (const dbName of databases) {
+          const productsCollection = createModel(dbName, collectionName);
+          const product = await productsCollection.findOne({ _id: productId });
+    
+          if (product) {
+            return product;
+          }
+        }
+        
+        return null;
+      },
+
 };
 
 const laptopModel = {
@@ -23,6 +39,7 @@ const watchModel = {
         const watches = await createModel(dbName, collectionName).find({}).toArray();
         return watches;
     }
+
 };
 
 const tabletModel = {
@@ -129,6 +146,7 @@ const allAccessoriesModel = {
         return accessories;
     }
 }
+
 
 
 
