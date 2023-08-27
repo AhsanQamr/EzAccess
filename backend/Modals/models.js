@@ -1,4 +1,7 @@
 // models.js
+
+const {ObjectId} = require('mongodb');
+
 function createModel(dbName, collectionName) {
     const connection = require('../db.js').getDBConnection(dbName);
     return connection.db().collection(collectionName);
@@ -15,7 +18,7 @@ const mobileModel = {
         
         for (const dbName of databases) {
           const productsCollection = createModel(dbName, collectionName);
-          const product = await productsCollection.findOne({ _id: productId });
+          const product = await productsCollection.findOne({ _id: new ObjectId(productId) });
     
           if (product) {
             return product;

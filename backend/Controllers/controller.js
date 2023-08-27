@@ -162,7 +162,7 @@ async function getProductDetails(req, res) {
         return res.status(400).json({ error: "productId is required" });
       }
   
-      const productDetails = await productModel.getDetails(dbName, collectionName, productId);
+      const productDetails = await mobileModel.getDetails(dbName, collectionName, productId);
   
       if (!productDetails) {
         return res.status(404).json({ error: 'Product not found' });

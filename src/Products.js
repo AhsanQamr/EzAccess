@@ -20,6 +20,7 @@ function Products(props) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:8080/api/mobiles");
+      console.log(response);
       const data = await response.json();
       console.log(data);
       setData(data);

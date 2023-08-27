@@ -48,8 +48,12 @@
     background-color: transparent;
     cursor: pointer;
     width: 100%;
-
 }
+
+.row__option__button.active{
+    color: #fdc00d;
+}
+
 
 .row__option__button:hover{
     color: #fdc00d;

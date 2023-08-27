@@ -1,98 +1,107 @@
+// Product.js
+
+import React, { useEffect, useState } from "react";
 import module from "./Product.module.css";
 import ProductsList from "./ProductsList";
+import ProductsFilter from "./ProductsFilter";
 
 const Product = (props) => {
+  const categories = [
+    "All",
+    "Daraz",
+    "Priceoye",
+    "Symbios",
+    "Shophive",
+    "Qmart",
+  ];
 
-  // Ensure product is an array before using slice
-  if (props.category === "laptops") {
-    const laptops = props.laptops;
-    const laptopArray = Array.isArray(laptops) ? laptops : [];
-    return (
-      <>
-        <div className={module.product}>
-          <div className={module.product__name}>
-            <h1>{props.category}</h1>
-          </div>
-          <div className={module.container}>
-            <div className={module.product__cards}>
-              <ProductsList laptoparray={laptopArray} category={props.category} />
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [displayedProducts, setDisplayedProducts] = useState([]);
 
-  if (props.category === "mobiles") {
-    //const mobiles = props.product;
-    // Ensure product is an array before using slice
-    const mobiles = props.product;
-    console.log("mobiles", mobiles);
-    const mobilesArray = Array.isArray(mobiles) ? mobiles : [];
-    return (
-      <>
-        <div className={module.product}>
-          <div className={module.product__name}>
-            <h1>{props.category}</h1>
-          </div>
-          <div className={module.product__cards}>
-            <ProductsList mobilesarray={mobilesArray} category={props.category} />
-          </div>
-        </div>
-      </>
-    );
-  }
+  // const onCategoryChange = (category) => {
+  //   setActiveCategory(category);
+  // };
 
-  if (props.category === "tablets") {
-    const tablets = props.tablets;
-    const tabletsArray = Array.isArray(tablets) ? tablets : [];
-    return (
-      <>
-        <div className={module.product}>
-          <div className={module.product__name}>
-            <h1>{props.category}</h1>
-          </div>
-          <div className={module.product__cards}>
-            <ProductsList tabletsarray={tabletsArray} category={props.category} />
-          </div>
-        </div>
-      </>
-    );
-  }
+  const fetchProducts = async (category) => {
+    const apiUrl =
+      category === "All"
+        ? `http://localhost:8080/api/${props.category}`
+        : `http://localhost:8080/api/${category}/${props.category}`;
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      console.log(`${category} data:`, data);
+      setDisplayedProducts(data);
+      setActiveCategory(category); // Update the active category after fetching
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-  if (props.category === "watches") {
-    const watches = props.watches;
-    const watchesArray = Array.isArray(watches) ? watches : [];
-    return (
-      <>
-        <div className={module.product}>
-          <div className={module.product__name}>
-            <h1>{props.category}</h1>
-          </div>
-          <div className={module.product__cards}>
-            <ProductsList watchesarray={watchesArray} category={props.category} />
-          </div>
-        </div>
-      </>
-    );
-  }
+  const onCategoryChange = (category) => {
+    setActiveCategory(category);
+    fetchProducts(category);
+  };
 
-  if (props.category === "accessories") {
-    const accessories = props.accessories;
-    const accessoriesArray = Array.isArray(accessories) ? accessories : [];
-    return (
-      <>
-        <div className={module.product}>
-          <div className={module.product__name}>
-            <h1>{props.category}</h1>
-          </div>
-          <div className={module.product__cards}>
-            <ProductsList accessoriesarray={accessoriesArray} category={props.category} />
-          </div>
+  useEffect(() => {
+    fetchProducts(activeCategory);
+  }, [activeCategory, props.category]);
+
+
+  const dataToSend = Array.isArray(displayedProducts) ? displayedProducts : [];
+
+  console.log("dataToSend:", dataToSend);
+
+  return (
+    <div className={module.product}>
+      <div className={module.product__name}>
+        <h1>{props.category}</h1>
+      </div>
+
+      <ProductsFilter
+        categories={categories}
+        activeCategory={activeCategory}
+        onCategoryChange={onCategoryChange}
+      />
+
+      <div className={module.container}>
+        <div className={module.product__cards}>
+          <ProductsList products={dataToSend} category={props.category} />
         </div>
-      </>
-    );
-  }
+      </div>
+      
+    </div>
+  );
 };
 
 export default Product;
+
+
+
+  // if (activeCategory !== "All") {
+  //   displayedProducts = displayedProducts.filter(product => {
+  //     console.log("Product:", product);
+  //     if (product && product.Category) {
+  //       console.log("Product category:", product.Category);
+  //       console.log("Active category:", activeCategory);
+  //       return product.category === activeCategory.toLowerCase();
+  //     }
+  //     return false;
+  //   });
+  // }
+
+
+    //let displayedProducts = [];
+
+  // if (props.category === "laptops") {
+  //   displayedProducts = Array.isArray(props.laptops) ? props.laptops : [];
+  // } else if (props.category === "mobiles") {
+  //   displayedProducts = Array.isArray(props.product) ? props.product : [];
+  // } else if (props.category === "tablets") {
+  //   displayedProducts = Array.isArray(props.tablets) ? props.tablets : [];
+  // } else if (props.category === "watches") {
+  //   displayedProducts = Array.isArray(props.watches) ? props.watches : [];
+  // } else if (props.category === "accessories") {
+  //   displayedProducts = Array.isArray(props.accessories) ? props.accessories : [];
+  // }
+
