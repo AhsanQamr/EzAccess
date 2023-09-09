@@ -15,12 +15,9 @@ const Product = (props) => {
     "Qmart",
   ];
 
+
   const [activeCategory, setActiveCategory] = useState("All");
   const [displayedProducts, setDisplayedProducts] = useState([]);
-
-  // const onCategoryChange = (category) => {
-  //   setActiveCategory(category);
-  // };
 
   const fetchProducts = async (category) => {
     const apiUrl =
@@ -47,8 +44,14 @@ const Product = (props) => {
     fetchProducts(activeCategory);
   }, [activeCategory, props.category]);
 
-
-  const dataToSend = Array.isArray(displayedProducts) ? displayedProducts : [];
+  var dataToSend = [];
+  if (activeCategory === "Priceoye" && props.category === "accessories") {
+    dataToSend = displayedProducts.accessories;
+    dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
+    console.log("dataToSend:", dataToSend);
+  } else {
+    dataToSend = Array.isArray(displayedProducts) ? displayedProducts : [];
+  }
 
   console.log("dataToSend:", dataToSend);
 
@@ -66,42 +69,11 @@ const Product = (props) => {
 
       <div className={module.container}>
         <div className={module.product__cards}>
-          <ProductsList products={dataToSend} category={props.category} />
+          <ProductsList products={dataToSend} category={props.category} activeCategory = {activeCategory} />
         </div>
       </div>
-      
     </div>
   );
 };
 
 export default Product;
-
-
-
-  // if (activeCategory !== "All") {
-  //   displayedProducts = displayedProducts.filter(product => {
-  //     console.log("Product:", product);
-  //     if (product && product.Category) {
-  //       console.log("Product category:", product.Category);
-  //       console.log("Active category:", activeCategory);
-  //       return product.category === activeCategory.toLowerCase();
-  //     }
-  //     return false;
-  //   });
-  // }
-
-
-    //let displayedProducts = [];
-
-  // if (props.category === "laptops") {
-  //   displayedProducts = Array.isArray(props.laptops) ? props.laptops : [];
-  // } else if (props.category === "mobiles") {
-  //   displayedProducts = Array.isArray(props.product) ? props.product : [];
-  // } else if (props.category === "tablets") {
-  //   displayedProducts = Array.isArray(props.tablets) ? props.tablets : [];
-  // } else if (props.category === "watches") {
-  //   displayedProducts = Array.isArray(props.watches) ? props.watches : [];
-  // } else if (props.category === "accessories") {
-  //   displayedProducts = Array.isArray(props.accessories) ? props.accessories : [];
-  // }
-

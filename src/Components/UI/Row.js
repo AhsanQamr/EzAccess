@@ -1,15 +1,34 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Row.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Row = () => {
+
+    const location = useLocation();
 
     const [activeButton, setActiveButton] = useState("mobiles");
 
     const handleActiveButton = (e) => {
-        // change color of active button
         setActiveButton(e.target.value);
     }
+
+      // Use the location pathname to determine the active button
+  const getActiveButton = () => {
+    const path = location.pathname;
+    if (path === "/mobiles") return "mobiles";
+    if (path === "/laptops") return "laptops";
+    if (path === "/tablets") return "tablets";
+    if (path === "/watches") return "watches";
+    if (path === "/accessories") return "accessories";
+    return "mobiles"; // Default active button
+  };
+
+  useEffect(() => {
+    setActiveButton(getActiveButton());
+    }, [location]);
+
+
+    const isMainPage = window.location.pathname === "/";
     
     return (
         <>
@@ -19,7 +38,7 @@ const Row = () => {
                     <Link to="/mobiles">
                         <button
                                 className={`row__option__button ${
-                                    activeButton === "mobiles" ? "active" : ""
+                                    activeButton === "mobiles"  && !isMainPage ? "active" : ""
                                 }`}
                                 onClick={handleActiveButton}
                                 value="mobiles"

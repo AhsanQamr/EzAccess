@@ -19,7 +19,7 @@ function App() {
           <Route path="/tablets" element={<Products category="tablets" />} />
           <Route path="/watches" element={<Products category="watches" />} />
           <Route path="/accessories" element={<Products category="accessories" />} />
-          <Route path='/:category/:id' element={<DetailedPage />} />
+          <Route path="/:dbName/:collectionName/:productId" element={<DetailedPage />} />
           <Route path="/login" element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
         </Routes>

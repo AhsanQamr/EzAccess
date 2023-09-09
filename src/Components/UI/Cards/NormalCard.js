@@ -9,13 +9,42 @@ const NormalCard = (props) => {
   const priceLength = priceString.length;
   const priceArray = priceString.split("");
   const priceArrayWithCommas = [];
+
+
   for (let i = 0; i < priceLength; i++) {
     if ((priceLength - i) % 3 === 0 && i !== 0) {
       priceArrayWithCommas.push(",");
     }
     priceArrayWithCommas.push(priceArray[i]);
   }
-  const current_price = priceArrayWithCommas.join("");
+  //const current_price = priceArrayWithCommas.join("");
+  var current_price = ""
+  if (props.activeCategory === "Daraz") {
+    current_price = `Rs ${priceArrayWithCommas.join("")}`;
+  } else if (props.activeCategory === "Priceoye") {
+    if (props.current_price === "No Current Price") {
+      current_price = "-";
+    } else {
+    current_price = props.current_price;
+    }
+  } else if (props.activeCategory === "Symbios") {
+    current_price = `Rs ${props.current_price}`
+  }
+
+  var original_price = ""
+  if (props.activeCategory === "Daraz") {
+    original_price = `Rs ${Math.floor(props.original_price)}`;
+  } else if (props.activeCategory === "Priceoye") {
+    if (props.original_price === "No Original Price") {
+      original_price = "-";
+    } else {
+    original_price = props.original_price;
+    }
+  } else if (props.activeCategory === "Symbios") {
+    original_price = props.original_price;
+  }
+
+
 
   const [isLiked, setIsLiked] = useState(false);
 
@@ -25,11 +54,13 @@ const NormalCard = (props) => {
     setIsLiked((prev) => !prev);
   };
 
+  //console.log("props:", props);
+
   return (
     // add comma after 3 digits of price
 
     <>
-      <Link to={`/${props.category}/${props.id}`} className={module.__link}>
+      <Link to={`/products/${props.category}/${props.id}`} className={module.__link} >
         <div className={module.__container}>
           <div className={module.__card}>
             <div className={module.__card__image}>
@@ -52,16 +83,18 @@ const NormalCard = (props) => {
                 <i class="bi bi-star-half"></i>
               </div>
               <div className={module.__brand__name}>
-                <span className={module.__brand__name}>Daraz</span>
+                <span className={module.__brand__name}>
+                  {props.activeCategory}
+                </span>
               </div>
               <div className={module.__card__buttons}>
                 <div className={module.__price}>
                   <span className={module.__discount__price}>
-                    Rs {current_price}
+                    {current_price}
                   </span>
                   <div className={module.__discount__box}>
                     <span className={module.__original__price}>
-                      Rs {Math.floor(props.original_price)}
+                      {original_price}
                     </span>
                     <span className={module.__discount__percent}>
                       {props.discount}

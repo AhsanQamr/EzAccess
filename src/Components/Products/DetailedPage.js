@@ -5,22 +5,32 @@ import { useParams } from "react-router-dom";
 
 const DetailedPage = () => {
 
-    const {category,id} = useParams();
-    console.log(category,id);
+    const categories = [
+        "All",
+        "Daraz",
+        "Priceoye",
+        "Symbios",
+        "Shophive",
+        "Qmart",
+      ];
+
+    const {dbName, collectionName, productId} = useParams();
+    console.log(dbName, collectionName, productId);
 
     const [products, setProducts] = useState([]);
 
 
     useEffect(() => {
         const fetchMobile = async () => {
-            const response = await fetch(`http://localhost:8080/daraz/products/${category}/${id}`);
+            const response = await fetch(`http://localhost:8080/api/${dbName}/${collectionName}/${productId}`);
+            console.log(`http://localhost:8080/api/${dbName}/${collectionName}/${productId}`);
             console.log(response);
             const data = await response.json();
 
             setProducts(data);
         };
         fetchMobile();
-    }, [category,id]);
+    }, [dbName, collectionName, productId]);
 
     console.log(products);
 

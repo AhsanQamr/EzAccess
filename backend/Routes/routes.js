@@ -18,6 +18,7 @@ router.get('/watches', controller.getAllWatches);
 router.get('/tablets', controller.getAllTablets);
 router.get('/accessories', controller.getAllAccessories);
 
+
 // route for product details
 router.get('/:dbName/:collectionName/:productId', controller.getProductDetails);
 
