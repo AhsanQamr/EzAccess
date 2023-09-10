@@ -75,6 +75,66 @@ const priceoyeAccessoriesModel = {
   },
 };
 
+const shophiveMobilesModel = {
+    getAll: async (dbName) => {
+        const mobilesCollection = createModel(dbName, 'mobiles');
+        const iphoneCollection = createModel(dbName, 'iphone');
+
+        const mobiles = await Promise.all([
+            mobilesCollection.find({}).toArray(),
+            iphoneCollection.find({}).toArray(),
+        ]);
+
+        return mobiles.flat();
+    }
+};
+
+const shophiveLaptopsModel = {
+    getAll: async (dbName) => {
+        const laptopsCollection = createModel(dbName, 'laptops');
+        const macbookCollection = createModel(dbName, 'mac');
+
+        const laptops = await Promise.all([
+            laptopsCollection.find({}).toArray(),
+            macbookCollection.find({}).toArray(),
+        ]);
+
+        return laptops.flat();
+    }
+};
+
+const shophiveWatchesModel = {
+    getAll: async (dbName) => {
+        const watchesCollection = createModel(dbName, 'watches');
+        const appleWatchCollection = createModel(dbName, 'apple_watch');
+
+        const watches = await Promise.all([
+            watchesCollection.find({}).toArray(),
+            appleWatchCollection.find({}).toArray(),
+        ]);
+
+        return watches.flat();
+    }
+};
+
+const qmartMobilesModel = {
+    getAll: async (dbName) => {
+        const mobilesCollection = createModel(dbName, 'mobiles');
+        const iphoneCollection = createModel(dbName, 'apple');
+
+        const mobiles = await Promise.all([
+            mobilesCollection.find({}).toArray(),
+            iphoneCollection.find({}).toArray(),
+        ]);
+
+        return mobiles.flat();
+    }
+};
+
+
+
+
+
 const allMobilesModel = {
     getAll: async () => {
         const databases = ['Daraz', 'Priceoye', 'Symbios', 'Shophive', 'Qmart'];
@@ -164,5 +224,9 @@ module.exports = {
     allLaptopsModel,
     allWatchesModel,
     allTabletsModel,
-    allAccessoriesModel
+    allAccessoriesModel,
+    shophiveMobilesModel,
+    shophiveLaptopsModel,
+    shophiveWatchesModel,
+    qmartMobilesModel,
 };

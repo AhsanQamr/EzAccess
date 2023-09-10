@@ -49,7 +49,26 @@ const Product = (props) => {
     dataToSend = displayedProducts.accessories;
     dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
     console.log("dataToSend:", dataToSend);
-  } else {
+  } else if (activeCategory === "Shophive" && props.category === "mobiles") {
+    dataToSend = displayedProducts.mobiles;
+    dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
+    console.log("dataToSend:", dataToSend);
+  } else if (activeCategory === "Shophive" && props.category === "laptops") {
+    dataToSend = displayedProducts.laptops;
+    dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
+    console.log("dataToSend:", dataToSend);
+  } else if (activeCategory === "Shophive" && props.category === "watches") {
+    dataToSend = displayedProducts.watches;
+    dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
+    console.log("dataToSend:", dataToSend);
+  } else if (activeCategory === "Qmart" && props.category === "mobiles") {
+    dataToSend = displayedProducts.mobiles;
+    dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
+    console.log("dataToSend:", dataToSend);
+  }
+  
+  
+  else {
     dataToSend = Array.isArray(displayedProducts) ? displayedProducts : [];
   }
 

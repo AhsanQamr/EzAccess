@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import module from "./NormalCard.module.css";
+import no_img from "../../../Assets/no-image.png";
 
 const NormalCard = (props) => {
   let price = Math.floor(props.current_price);
@@ -29,6 +30,26 @@ const NormalCard = (props) => {
     }
   } else if (props.activeCategory === "Symbios") {
     current_price = `Rs ${props.current_price}`
+  } else if (props.activeCategory === "Shophive") {
+    if (props.current_price === "No Price Found") {
+      current_price = "-";
+    }
+      else {
+        current_price = `${props.current_price}`
+      }
+  } else if (props.activeCategory === "Qmart") {
+    if (props.current_price === "No Price Found") {
+      current_price = "-";
+    }
+      else {
+        current_price = `${props.current_price}`
+      }
+  } else if (props.activeCategory === "All") {
+    if (props.current_price.includes("Rs")){
+      current_price = props.current_price;
+    } else {
+      current_price = `Rs ${props.current_price}`
+      }
   }
 
   var original_price = ""
@@ -42,7 +63,29 @@ const NormalCard = (props) => {
     }
   } else if (props.activeCategory === "Symbios") {
     original_price = props.original_price;
+  } else if (props.activeCategory === "Shophive") {
+    if (props.original_price === "No Price Found") {
+      original_price = "-";
+    } else
+        original_price = props.original_price;
+  } else if (props.activeCategory === "Qmart") {
+    if (props.original_price === "No Price Found") {
+      original_price = "-";
+    } else
+        original_price = props.original_price;
+  } else if (props.activeCategory === "All") {
+    if (props.original_price.includes("Rs")){
+      original_price = props.original_price;
+    } else {
+      original_price = `Rs ${props.original_price}`
+      }
+
   }
+
+  
+  console.log("image", props.image)
+  const encodedImage = encodeURI(props.image);
+  console.log("encodedImage:", encodedImage);
 
 
 
@@ -54,7 +97,7 @@ const NormalCard = (props) => {
     setIsLiked((prev) => !prev);
   };
 
-  //console.log("props:", props);
+  
 
   return (
     // add comma after 3 digits of price
@@ -65,10 +108,14 @@ const NormalCard = (props) => {
           <div className={module.__card}>
             <div className={module.__card__image}>
               <img
-                src={props.image}
+                src={encodedImage}
                 alt="image1"
                 loading="lazy"
                 className={module.__card_img}
+                onError={(e) => {
+                  console.error("image not found" + e.error);
+                  e.target.src = no_img;
+                }}
               />
             </div>
             <div className={module.__product__detail__}>
