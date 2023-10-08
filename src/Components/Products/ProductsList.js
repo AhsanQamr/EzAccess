@@ -32,7 +32,7 @@ const ProductsList = ({ products, category, activeCategory }) => {
             current_price={current_price}
             image={item.productImg}
             discount={item.discount}
-            category={item.category}
+            category={item.Category}
             activeCategory={activeCategory}
           />
         );
@@ -66,7 +66,7 @@ const ProductsList = ({ products, category, activeCategory }) => {
             original_price={item.price_old}
             image={item.img_url}
             discount={item.off}
-            category={item.category}
+            category={item.Category}
             activeCategory={activeCategory}
             />
         );
@@ -146,7 +146,7 @@ const ProductsList = ({ products, category, activeCategory }) => {
             current_price={all_current_price}
             image={item.productImg}
             discount={item.discount}
-            category={item.category}
+            category={item.Category}
             activeCategory={"Daraz"}
           
           />

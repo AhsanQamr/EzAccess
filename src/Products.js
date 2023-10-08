@@ -15,8 +15,6 @@ function Products(props) {
   const [watches, setWatches] = useState([]); 
   const [accessories, setAccessories] = useState([]);
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:8080/api/mobiles");
@@ -70,9 +68,6 @@ function Products(props) {
     };
     fetchAccessories();
   }, []);
-
-
-
 
 
 

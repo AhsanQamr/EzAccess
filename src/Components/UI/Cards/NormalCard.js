@@ -87,6 +87,21 @@ const NormalCard = (props) => {
   const encodedImage = encodeURI(props.image);
   console.log("encodedImage:", encodedImage);
 
+  let Availibility = ""
+  if (props.activeCategory === "Daraz") {
+    Availibility = "-";
+  } else if (props.activeCategory === "Priceoye") {
+    Availibility = props.Stock;
+  } else if (props.activeCategory === "Symbios") {
+    Availibility = "-";
+  } else if (props.activeCategory === "Shophive") {
+    Availibility = props.Availibility;
+  } else if (props.activeCategory === "Qmart") {
+    Availibility = "-";
+  } else{
+    Availibility = "-";
+  }
+
 
 
   const [isLiked, setIsLiked] = useState(false);
@@ -103,7 +118,7 @@ const NormalCard = (props) => {
     // add comma after 3 digits of price
 
     <>
-      <Link to={`/products/${props.category}/${props.id}`} className={module.__link} >
+      <Link to={`/${props.activeCategory}/${props.category}/${props.id}`} className={module.__link} >
         <div className={module.__container}>
           <div className={module.__card}>
             <div className={module.__card__image}>
