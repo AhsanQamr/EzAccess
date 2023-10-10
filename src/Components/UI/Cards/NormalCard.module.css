@@ -10,8 +10,8 @@
 }
 
 .__card{
-    width: 300px;
-    height: 320px;
+    width: 285px;
+    height: 250px;
     background-color: #ffffff;
     border-radius: 10px;
     z-index: 5;
@@ -37,7 +37,7 @@
 
 .__card__image{
     margin-top: 0;
-    height: 170px;
+    height: 120px;
     background-repeat: no-repeat;
     background-position: 0;
     /* transform: scale(0.3); */
@@ -46,15 +46,15 @@
 
 .__card_img{
     width: 100%;
-    height: 90%;
+    height: 70%;
     object-fit: contain;
     border-radius: 10px 10px 0 0;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .__product__detail__{
     
-    height: 150px;
+    height: 130px;
     background-color: #3e3e3e;
     border-radius: 0 40% 10px 10px;
     padding: 0.8rem;
@@ -70,7 +70,7 @@
 }
 
 .__card__buttons{
-    margin-top: 1px;
+    margin-top: 0px;
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -87,7 +87,7 @@
 }
 
 .__discount__box{
-    margin-top: 1px;
+    margin-top: 0.5px;
 }
 
 

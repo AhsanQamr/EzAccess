@@ -69,6 +69,8 @@ function Products(props) {
     fetchAccessories();
   }, []);
 
+  console.log(`category : ${props.category}`)
+
 
 
     return (

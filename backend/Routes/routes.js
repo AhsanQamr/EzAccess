@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../Controllers/controller');
 
+
 router.get('/:dbName/mobiles', controller.getMobiles);
 router.get('/:dbName/laptops', controller.getLaptops);
 router.get('/:dbName/watches', controller.getWatches);
@@ -21,5 +22,6 @@ router.get('/accessories', controller.getAllAccessories);
 
 // route for product details
 router.get('/:dbName/:collectionName/:productId', controller.getProductDetails);
+
 
 module.exports = router;

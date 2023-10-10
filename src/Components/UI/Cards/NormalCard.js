@@ -81,11 +81,8 @@ const NormalCard = (props) => {
       }
 
   }
-
   
-  console.log("image", props.image)
   const encodedImage = encodeURI(props.image);
-  console.log("encodedImage:", encodedImage);
 
   let Availibility = ""
   if (props.activeCategory === "Daraz") {
@@ -112,6 +109,8 @@ const NormalCard = (props) => {
     setIsLiked((prev) => !prev);
   };
 
+  console.log(`currentCategory:${props.category}`)
+
   
 
   return (
@@ -137,13 +136,6 @@ const NormalCard = (props) => {
               <span className={module.__product__name}>
                 {props.name ? props.name.slice(0, 22) : "Product Name"}...
               </span>
-              <div className={module.__product__rating}>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-              </div>
               <div className={module.__brand__name}>
                 <span className={module.__brand__name}>
                   {props.activeCategory}

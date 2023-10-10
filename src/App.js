@@ -6,6 +6,7 @@ import MainPage from './MainPage';
 import { Route, Routes } from 'react-router-dom';
 import Products from './Products';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import SentimentAnalysis from './Components/Products/SentimentAnalysis';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/:dbName/:collectionName/:productId" element={<DetailedPage />} />
           <Route path="/login" element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
+          <Route path='/sentiment' element = {<SentimentAnalysis />} />
         </Routes>
       </div>
       </>
