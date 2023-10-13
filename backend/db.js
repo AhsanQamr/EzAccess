@@ -7,6 +7,7 @@ const databases = {
   Symbios: 'mongodb://localhost:27017/Symbios',
   Shophive: 'mongodb://localhost:27017/Shophive',
   Qmart: 'mongodb://localhost:27017/Qmart',
+  EzAccess: 'mongodb://localhost:27017/EzAccess'
 };
 
 const connections = {};

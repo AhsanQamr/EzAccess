@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../Controllers/controller');
+const {signup, login} = require('../Controllers/AuthControllers')
+const {requireAuth} = require('../Middleware/Auth')
 
 
 router.get('/:dbName/mobiles', controller.getMobiles);
@@ -19,9 +21,19 @@ router.get('/watches', controller.getAllWatches);
 router.get('/tablets', controller.getAllTablets);
 router.get('/accessories', controller.getAllAccessories);
 
+// post for search route
+
 
 // route for product details
 router.get('/:dbName/:collectionName/:productId', controller.getProductDetails);
+
+router.post('/signup', signup)
+
+router.post('/login', login)
+
+router.get('/auth', requireAuth, (req,res) => {
+    res.status(200).send({message: 'Authorized'})
+});
 
 
 module.exports = router;

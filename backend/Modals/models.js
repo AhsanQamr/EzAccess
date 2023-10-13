@@ -1,6 +1,7 @@
 // models.js
 
 const {ObjectId} = require('mongodb');
+const mongoose = require('mongoose')
 
 function createModel(dbName, collectionName) {
     const connection = require('../db.js').getDBConnection(dbName);
@@ -27,6 +28,17 @@ const mobileModel = {
         
         return null;
       },
+
+    // search products
+    search: async (dbName, collectionName, query) => {
+        const products = await createModel(dbName, collectionName).find({
+            $text: {
+                $search: query,
+            },
+        }).toArray();
+
+        return products;
+    },
 
 };
 
@@ -209,6 +221,13 @@ const allAccessoriesModel = {
         return accessories;
     }
 }
+
+
+
+
+
+
+
 
 
 

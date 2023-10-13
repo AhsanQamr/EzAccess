@@ -247,8 +247,22 @@ async function getProductDetails(req, res) {
     }
   }
 
+  // search collection
+  async function searchNames (req, res){
+    try{
+      const dbName = req.params.dbName;
+      const collectionName = req.params.collectionName;
+      const searchName = req.params.searchName;
+      const search = await mobileModel.search(dbName, collectionName, searchName);
+      res.json(search);
+    } catch (error) {
+      console.error('Error getting product details:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
 
 
+  
 
 
 module.exports = {
@@ -262,7 +276,6 @@ module.exports = {
     getAllWatches,
     getAllTablets,
     getAllAccessories,
-    getProductDetails,
-
-    
+    getProductDetails,  
+    //searchNames
 };

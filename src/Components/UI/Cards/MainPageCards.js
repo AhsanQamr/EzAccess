@@ -28,9 +28,11 @@ const MainPageCards = (props) => {
     setIsLiked((prev) => !prev)
   };
 
+  console.log(`Database: ${props.database}`)
+
   return (
     <>
-      <Link to={`/${props.category}/${props.id}`} className={module.__link}>
+      <Link to={`/${props.database}/${props.category}/${props.id}`} className={module.__link}>
         <div className={module.__container}>
           <div className={module.__card}>
             <div className={module.__card__image}>
@@ -44,13 +46,6 @@ const MainPageCards = (props) => {
               <span className={module.__product__name}>
                 {props.name.slice(0, 22)}...
               </span>
-              <div className={module.__product__rating}>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-              </div>
               <div className={module.__brand__name}>
                 <span className={module.__brand__name}>Daraz</span>
               </div>

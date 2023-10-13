@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import module from "./Product.module.css";
 import ProductsList from "./ProductsList";
 import ProductsFilter from "./ProductsFilter";
+import ContainerCards from "../UI/Cards/ContainerCards";
 
 const Product = (props) => {
   const categories = [
@@ -14,7 +15,6 @@ const Product = (props) => {
     "Shophive",
     "Qmart",
   ];
-
 
   const [activeCategory, setActiveCategory] = useState("All");
   const [displayedProducts, setDisplayedProducts] = useState([]);
@@ -85,6 +85,7 @@ const Product = (props) => {
         activeCategory={activeCategory}
         onCategoryChange={onCategoryChange}
       />
+
 
       <div className={module.container}>
         <div className={module.product__cards}>

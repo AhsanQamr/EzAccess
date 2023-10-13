@@ -6,7 +6,6 @@ const port = 8080;
 const {connectDatabases} = require('./db');
 const cors = require('cors');
 
-
 connectDatabases();
 
 app.use(express.json());
@@ -22,6 +21,17 @@ app.use(express.urlencoded({ extended: true }));
 //     });
 
 app.use('/api', routes);
+
+app.get("/recommendedItems", (req, res) => {
+    console.log("recommend user: ", req.query.userId);
+    const pythonProcess = spawn("python3", ["./top-secret.py", req.query.userId]);
+    pythonProcess.stdout.on("data", function (data) {
+      const myArr = JSON.parse(data.toString().replaceAll("'", '"'));
+      console.log('data: ',data.toString());
+      res.json(myArr);
+      //res.send(data)
+    });
+  });
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);

@@ -2,6 +2,8 @@ import React, {useState,useEffect} from 'react'
 import './ContainerCards.css'
 import MainPageCards from './MainPageCards';
 import { Link } from 'react-router-dom';
+
+
 const ContainerCards = (props) => {
 
     const [data, setData] = useState([]);
@@ -36,6 +38,9 @@ const ContainerCards = (props) => {
     const mobilesArray = Array.isArray(data) ? data : [];
     const laptopArray = Array.isArray(laptops) ? laptops : [];
 
+
+    console.log(`Active Category Container ${props.activeCategory}`)
+
     
 
 
@@ -51,7 +56,6 @@ const ContainerCards = (props) => {
                     </div>
                     <div className='container__card'>
                         {mobilesArray.slice(6,12).map((item) => {
-                            console.log(item.Category)
                             return (
                                 <MainPageCards
                                     key={item._id}
@@ -62,6 +66,7 @@ const ContainerCards = (props) => {
                                     image={item.productImg}
                                     discount={item.discount}
                                     category={item.Category}
+                                    database = {item.Database}
                                 />
                             );
                         })}
@@ -95,6 +100,7 @@ const ContainerCards = (props) => {
                                     image={item.productImg}
                                     discount={item.discount}
                                     category = {item.Category}
+                                    database = {item.Database}
                                 />
                             );
                         })}
@@ -130,6 +136,7 @@ const ContainerCards = (props) => {
                                     image={item.productImg}
                                     discount={item.discount}
                                     category={item.Category}
+                                    database = {item.Database}
                                 />
                             );
                         })}

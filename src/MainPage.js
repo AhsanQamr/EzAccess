@@ -12,6 +12,7 @@ function MainPage() {
   return (
     <>
       <div className="App">
+      {/* {localStorage.clear()} */}
         <Header />
         <Row />
         <Home  />

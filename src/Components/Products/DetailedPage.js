@@ -51,6 +51,14 @@ const DetailedPage = () => {
         inStock = "Out of Stock";
       }
 
+      let currentPrice = products.currentPrice
+        if(products.Category === "mobiles"){
+          currentPrice = products.currentPrice
+        } else{
+          currentPrice = products.price
+        }
+
+
       return (
         <>
           <div className="container" style={{ marginTop: "3rem" }}>
@@ -74,7 +82,7 @@ const DetailedPage = () => {
                     <p className="text-muted">Category: {products.Category}</p>
                   </div>
                 </div>
-                <h4>Rs {products.currentPrice}</h4>
+                <h4>Rs {currentPrice}</h4>
                 <div className="row">
                   <div className="col-auto">
                     <span className="text-muted">
@@ -103,6 +111,25 @@ const DetailedPage = () => {
                   Visit Website
                 </button>
                 <hr style={{ marginTop: "1rem" }}></hr>
+              </div>
+              <div className="row">
+                <div className="col-10 mt-3">
+                  <div className="rounded p-3 border bg-light">
+                  <h4>Sentiment Scores:</h4>
+                    <ul>
+                    {Object.entries(products).map(([key, value], index) => {
+          if (key === 'SentimentScore' && typeof value === 'object') {
+            return Object.entries(value).map(([label, score]) => (
+              <li key={label}>
+                {label}: {score}
+              </li>
+            ));
+          }
+          return null; // Handle cases where SentimentScore is not present or not an object
+        })}
+                    </ul>
+                  </div>
+                </div>
               </div>
               <div className="col-12" style={{ marginTop: "1.4rem" }}>
                 <ProductDescription descriptionData={products.description} />

@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Products from './Products';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import SentimentAnalysis from './Components/Products/SentimentAnalysis';
+import SearchProducts from './Components/Products/SearchProducts';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/sentiment' element = {<SentimentAnalysis />} />
+          <Route path='/products' element = {<SearchProducts />} />
         </Routes>
       </div>
       </>
