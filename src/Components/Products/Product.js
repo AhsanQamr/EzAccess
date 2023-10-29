@@ -22,8 +22,8 @@ const Product = (props) => {
   const fetchProducts = async (category) => {
     const apiUrl =
       category === "All"
-        ? `http://localhost:8080/api/${props.category}`
-        : `http://localhost:8080/api/${category}/${props.category}`;
+        ? `http://localhost:8081/api/${props.category}`
+        : `http://localhost:8081/api/${category}/${props.category}`;
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();

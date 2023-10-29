@@ -2,7 +2,7 @@ const express = require('express');
 const routes = require('./Routes/routes')
 const controller = require('./Controllers/controller');
 const app = express();
-const port = 8080;
+const port = 8081;
 const {connectDatabases} = require('./db');
 const cors = require('cors');
 

@@ -13,10 +13,10 @@ const DetailedPage = () => {
   useEffect(() => {
     const fetchMobile = async () => {
       const response = await fetch(
-        `http://localhost:8080/api/${dbName}/${collectionName}/${productId}`
+        `http://localhost:8081/api/${dbName}/${collectionName}/${productId}`
       );
       console.log(
-        `http://localhost:8080/api/${dbName}/${collectionName}/${productId}`
+        `http://localhost:8081/api/${dbName}/${collectionName}/${productId}`
       );
       console.log(response);
       const data = await response.json();

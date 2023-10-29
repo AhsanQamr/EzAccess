@@ -13,7 +13,7 @@ const SentimentAnalysis = () => {
 
   const analyzeSentiment = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/api/sentiment', { text });
+      const response = await axios.post('http://localhost:8081/api/sentiment', { text });
       const sentimentResult = response.data.sentiment;
       setSentiment(sentimentResult);
     } catch (error) {

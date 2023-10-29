@@ -12,7 +12,7 @@ const ContainerCards = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("http://localhost:8080/api/Daraz/mobiles");
+            const response = await fetch("http://localhost:8081/api/Daraz/mobiles");
             const data = await response.json();
             setData(data);
         };
@@ -23,7 +23,7 @@ const ContainerCards = (props) => {
 
     useEffect(() => {
         const fetchLaptops = async () => {
-            const response = await fetch("http://localhost:8080/api/Daraz/laptops");
+            const response = await fetch("http://localhost:8081/api/Daraz/laptops");
             const data = await response.json();
 
             setLaptops(data);
