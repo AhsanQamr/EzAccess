@@ -16,11 +16,11 @@ function App() {
       <div className='App'>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/mobiles" element={<Products category="mobiles" />} />
-          <Route path="/laptops" element={<Products category="laptops" />} />
-          <Route path="/tablets" element={<Products category="tablets" />} />
-          <Route path="/watches" element={<Products category="watches" />} />
-          <Route path="/accessories" element={<Products category="accessories" />} />
+          <Route path="/mobiles" element={<Products category="Mobiles" />} />
+          <Route path="/laptops" element={<Products category="Laptops" />} />
+          <Route path="/tablets" element={<Products category="Tablets" />} />
+          <Route path="/watches" element={<Products category="Watches" />} />
+          <Route path="/accessories" element={<Products category="Accessories" />} />
           <Route path="/:dbName/:collectionName/:productId" element={<DetailedPage />} />
           <Route path="/login" element={<Login />} />
           <Route path='/signup' element={<SignUp />} />

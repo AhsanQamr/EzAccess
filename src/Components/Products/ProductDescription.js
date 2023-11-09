@@ -13,9 +13,9 @@ function ProductDescription({ descriptionData }) {
   }
 
   // Check if "General Features" is present; if not, add it
-  if (!descriptionData.some(item => item.startsWith("General Features"))) {
-    descriptionData.unshift("General Features ");
-  }
+  // if (!descriptionData.some(item => item.startsWith("General Features"))) {
+  //   descriptionData.unshift("General Features ");
+  // }
 
   let isGeneralFeatures = false;
 

@@ -17,7 +17,7 @@ function Products(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8081/api/mobiles");
+      const response = await fetch("http://localhost:8081/api/categories/Mobiles");
       console.log(response);
       const data = await response.json();
       console.log(data);
@@ -30,7 +30,7 @@ function Products(props) {
 
   useEffect(() => {
     const fetchLaptops = async () => {
-      const response = await fetch("http://localhost:8081/api/laptops");
+      const response = await fetch("http://localhost:8081/api/categories/Laptops")
       const data = await response.json();
 
       setLaptops(data);
@@ -41,7 +41,7 @@ function Products(props) {
 
   useEffect(() => {
     const fetchTablets = async () => {
-      const response = await fetch("http://localhost:8081/api/tablets");
+      const response = await fetch("http://localhost:8081/api/categories/Tablets");
       const data = await response.json();
 
       setTablets(data);
@@ -51,7 +51,7 @@ function Products(props) {
 
   useEffect(() => {
     const fetchWatches = async () => {
-      const response = await fetch("http://localhost:8081/api/watches");
+      const response = await fetch("http://localhost:8081/api/categories/Watches");
       const data = await response.json();
 
       setWatches(data);
@@ -61,7 +61,7 @@ function Products(props) {
 
   useEffect(() => {
     const fetchAccessories = async () => {
-      const response = await fetch("http://localhost:8081/api/accessories");
+      const response = await fetch("http://localhost:8081/api/categories/Accessories");
       const data = await response.json();
 
       setAccessories(data);
@@ -69,7 +69,7 @@ function Products(props) {
     fetchAccessories();
   }, []);
 
-  console.log(`category : ${props.category}`)
+  console.log(`current category : ${props.category}`)
 
 
 
@@ -78,7 +78,7 @@ function Products(props) {
           <div className="App">
             <Header />
             <Row />
-            <Product category = {props.category} product={data} laptops = {laptops} tablets = {tablets} watches={watches} accessories={accessories}  />
+            <Product category = {props.category} product={data} laptops = {laptops} tablets = {tablets} watches={watches} accessories={accessories}   />
             <Footer />
           </div>
         </>

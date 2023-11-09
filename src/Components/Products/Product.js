@@ -20,10 +20,13 @@ const Product = (props) => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
 
   const fetchProducts = async (category) => {
+
+    console.log(`Product.js ${props.category} with db name ${category}`)
+
     const apiUrl =
       category === "All"
-        ? `http://localhost:8081/api/${props.category}`
-        : `http://localhost:8081/api/${category}/${props.category}`;
+        ? `http://localhost:8081/api/categories/${props.category}`
+        : `http://localhost:8081/api/categories/${props.category}/sources/${category}`
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
@@ -45,23 +48,11 @@ const Product = (props) => {
   }, [activeCategory, props.category]);
 
   var dataToSend = [];
-  if (activeCategory === "Priceoye" && props.category === "accessories") {
+  if (activeCategory === "Priceoye" && props.category === "Accessories") {
     dataToSend = displayedProducts.accessories;
     dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
     console.log("dataToSend:", dataToSend);
-  } else if (activeCategory === "Shophive" && props.category === "mobiles") {
-    dataToSend = displayedProducts.mobiles;
-    dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
-    console.log("dataToSend:", dataToSend);
-  } else if (activeCategory === "Shophive" && props.category === "laptops") {
-    dataToSend = displayedProducts.laptops;
-    dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
-    console.log("dataToSend:", dataToSend);
-  } else if (activeCategory === "Shophive" && props.category === "watches") {
-    dataToSend = displayedProducts.watches;
-    dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
-    console.log("dataToSend:", dataToSend);
-  } else if (activeCategory === "Qmart" && props.category === "mobiles") {
+  }  else if (activeCategory === "Qmart" && props.category === "Mobiles") {
     dataToSend = displayedProducts.mobiles;
     dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
     console.log("dataToSend:", dataToSend);

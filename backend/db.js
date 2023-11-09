@@ -1,36 +1,31 @@
 // db.js
 const { MongoClient } = require('mongodb');
 
-const databases = {
-  Daraz: 'mongodb://localhost:27017/Daraz',
-  Priceoye: 'mongodb://localhost:27017/priceoye',
-  Symbios: 'mongodb://localhost:27017/Symbios',
-  Shophive: 'mongodb://localhost:27017/Shophive',
-  Qmart: 'mongodb://localhost:27017/Qmart',
-  EzAccess: 'mongodb://localhost:27017/EzAccess'
-};
+let client = null;
 
-const connections = {};
+async function connectDatabase() {
+  if (client) {
+    return client; // Return the existing connection if it's already established.
+  }
 
-async function connectDatabases() {
   try {
-    for (const dbName in databases) {
-      const uri = databases[dbName];
-      const client = new MongoClient(uri, { useUnifiedTopology: true });
-      await client.connect();
-      connections[dbName] = client;
-    }
-    console.log('All databases connected successfully.');
+    const uri = 'mongodb://localhost:27017/EzAccess'; // EzAccess database
+    client = new MongoClient(uri, { useUnifiedTopology: true });
+    await client.connect();
+    console.log('Database connected successfully.');
+    return client;
   } catch (error) {
-    console.error('Error connecting databases:', error);
+    console.error('Error connecting to the database:', error);
+    throw error; // You can choose to handle the error here or let the caller handle it.
   }
 }
 
-function getDBConnection(dbName) {
-  return connections[dbName];
+function getDBConnection() {
+  return client;
 }
 
 module.exports = {
-  connectDatabases,
+  connectDatabase,
   getDBConnection,
 };
+

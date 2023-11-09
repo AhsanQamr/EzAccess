@@ -22,17 +22,18 @@ const ProductsList = ({ products, category, activeCategory }) => {
   const renderedProdcuts = (item, category, activeCategory) => {
     switch (activeDB) {
       case "Daraz":
-        const current_price = category === "mobiles" ? item.currentPrice : item.price;
+        console.log(`daraz in products list : ${item.category}`)
         return (
           <NormalCard
             key={item._id}
             id={item._id}
-            name={item.name}
+            name={item.productName}
             original_price={item.originalPrice}
-            current_price={current_price}
+            current_price={item.price}
             image={item.productImg}
             discount={item.discount}
-            category={item.Category}
+            category={item.category}
+            source = {item.source}
             activeCategory={activeCategory}
           />
         );
@@ -43,12 +44,13 @@ const ProductsList = ({ products, category, activeCategory }) => {
           <NormalCard
             key={item._id}
             id={item._id}
-            name= {item["Product Name"]}
-            current_price={item["Current Price"]}
-            original_price={item["Original Price"]}
-            image={item["Product Image"]}
-            discount={item["Discount"]}
-            category={item.Category}
+            name= {item.productName}
+            current_price={item.price}
+            original_price={item.originalPrice}
+            image={item.productImg}
+            discount={item.discount}
+            category={item.category}
+            source= {item.source}
             activeCategory={activeCategory}
             />
         );
@@ -61,12 +63,13 @@ const ProductsList = ({ products, category, activeCategory }) => {
           <NormalCard
             key={item._id}
             id={item._id}
-            name= {item.name}
-            current_price={item.price_new}
-            original_price={item.price_old}
-            image={item.img_url}
-            discount={item.off}
-            category={item.Category}
+            name= {item.productName}
+            current_price={item.price}
+            original_price={item.originalPrice}
+            image={item.productImg}
+            discount={item.discount}
+            category={item.category}
+            source= {item.source}
             activeCategory={activeCategory}
             />
         );
@@ -74,7 +77,7 @@ const ProductsList = ({ products, category, activeCategory }) => {
             console.log("Shophive");
             //console.log("item:", item);
           
-            const prices = item.Price || [];
+            const prices = item.prices || [];
           
             let currnt_price = "-";
             let original_price = "-";
@@ -89,17 +92,20 @@ const ProductsList = ({ products, category, activeCategory }) => {
               currnt_price = prices[0];
               original_price = prices[1];
             }
+
+            console.log(`product image of shophive: ${item.productImg}`)
           
             return (
               <NormalCard
                 key={item._id}
                 id={item._id}
-                name={item.Title}
+                name={item.productName}
                 current_price={currnt_price}
                 original_price={original_price}
-                image={item.image}
+                image={item.productImg}
                 discount=""
-                category={item.Category}
+                category={item.category}
+                source = {item.source}
                 activeCategory={activeCategory}
               />
             );
@@ -131,23 +137,23 @@ const ProductsList = ({ products, category, activeCategory }) => {
             original_price={qoriginal_price}
             image={item.Image}
             discount={""}
-            category={item.Category}
+            category={item.category}
+            source = {item.source}
             activeCategory={activeCategory}
             />
         );
       default:
-        const all_current_price = category === "mobiles" ? item.currentPrice : item.price;
         return (
           <NormalCard
             key={item._id}
             id={item._id}
-            name={item.name}
+            name={item.productName}
             original_price={item.originalPrice}
-            current_price={all_current_price}
+            current_price={item.price}
             image={item.productImg}
             discount={item.discount}
-            category={item.Category}
-            activeCategory={"Daraz"}
+            category={item.category}
+            source = {item.source}
           
           />
         );

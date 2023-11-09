@@ -20,31 +20,31 @@ const NormalCard = (props) => {
   }
   //const current_price = priceArrayWithCommas.join("");
   var current_price = ""
-  if (props.activeCategory === "Daraz") {
+  if (props.source === "Daraz") {
     current_price = `Rs ${priceArrayWithCommas.join("")}`;
-  } else if (props.activeCategory === "Priceoye") {
+  } else if (props.source === "Priceoye") {
     if (props.current_price === "No Current Price") {
       current_price = "-";
     } else {
     current_price = props.current_price;
     }
-  } else if (props.activeCategory === "Symbios") {
+  } else if (props.source === "Symbios") {
     current_price = `Rs ${props.current_price}`
-  } else if (props.activeCategory === "Shophive") {
+  } else if (props.source === "Shophive") {
     if (props.current_price === "No Price Found") {
       current_price = "-";
     }
       else {
         current_price = `${props.current_price}`
       }
-  } else if (props.activeCategory === "Qmart") {
+  } else if (props.source === "Qmart") {
     if (props.current_price === "No Price Found") {
       current_price = "-";
     }
       else {
         current_price = `${props.current_price}`
       }
-  } else if (props.activeCategory === "All") {
+  } else if (props.source === "All") {
     if (props.current_price.includes("Rs")){
       current_price = props.current_price;
     } else {
@@ -53,27 +53,27 @@ const NormalCard = (props) => {
   }
 
   var original_price = ""
-  if (props.activeCategory === "Daraz") {
+  if (props.source === "Daraz") {
     original_price = `Rs ${Math.floor(props.original_price)}`;
-  } else if (props.activeCategory === "Priceoye") {
+  } else if (props.source === "Priceoye") {
     if (props.original_price === "No Original Price") {
       original_price = "-";
     } else {
     original_price = props.original_price;
     }
-  } else if (props.activeCategory === "Symbios") {
+  } else if (props.source === "Symbios") {
     original_price = props.original_price;
-  } else if (props.activeCategory === "Shophive") {
+  } else if (props.source === "Shophive") {
     if (props.original_price === "No Price Found") {
       original_price = "-";
     } else
         original_price = props.original_price;
-  } else if (props.activeCategory === "Qmart") {
+  } else if (props.source === "Qmart") {
     if (props.original_price === "No Price Found") {
       original_price = "-";
     } else
         original_price = props.original_price;
-  } else if (props.activeCategory === "All") {
+  } else if (props.source === "All") {
     if (props.original_price.includes("Rs")){
       original_price = props.original_price;
     } else {
@@ -85,15 +85,15 @@ const NormalCard = (props) => {
   const encodedImage = encodeURI(props.image);
 
   let Availibility = ""
-  if (props.activeCategory === "Daraz") {
+  if (props.source === "Daraz") {
     Availibility = "-";
-  } else if (props.activeCategory === "Priceoye") {
+  } else if (props.source === "Priceoye") {
     Availibility = props.Stock;
-  } else if (props.activeCategory === "Symbios") {
+  } else if (props.source === "Symbios") {
     Availibility = "-";
-  } else if (props.activeCategory === "Shophive") {
+  } else if (props.source === "Shophive") {
     Availibility = props.Availibility;
-  } else if (props.activeCategory === "Qmart") {
+  } else if (props.source === "Qmart") {
     Availibility = "-";
   } else{
     Availibility = "-";
@@ -117,7 +117,7 @@ const NormalCard = (props) => {
     // add comma after 3 digits of price
 
     <>
-      <Link to={`/${props.activeCategory}/${props.category}/${props.id}`} className={module.__link} >
+      <Link to={`/${props.source}/${props.category}/${props.id}`} className={module.__link} >
         <div className={module.__container}>
           <div className={module.__card}>
             <div className={module.__card__image}>
@@ -138,7 +138,7 @@ const NormalCard = (props) => {
               </span>
               <div className={module.__brand__name}>
                 <span className={module.__brand__name}>
-                  {props.activeCategory}
+                  {props.source}
                 </span>
               </div>
               <div className={module.__card__buttons}>
