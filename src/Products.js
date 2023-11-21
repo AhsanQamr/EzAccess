@@ -43,7 +43,6 @@ function Products(props) {
     const fetchTablets = async () => {
       const response = await fetch("http://localhost:8081/api/categories/Tablets");
       const data = await response.json();
-
       setTablets(data);
     };
     fetchTablets();

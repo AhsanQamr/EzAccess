@@ -29,3 +29,10 @@
     grid-gap: 1rem;
     padding: 0 0.4rem;
 }
+
+.loaderContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

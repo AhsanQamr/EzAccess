@@ -50,19 +50,7 @@ const DetailedPage = () => {
       } else {
         inStock = "Out of Stock";
       }
-
-      let currentPrice = products.currentPrice;
-      if (products.category === "Mobiles") {
-        currentPrice = products.currentPrice;
-      } else {
-        currentPrice = products.price;
-      }
-
       console.log(`description : ${products.description}`)
-
-
-
-
       return (
         <>
           <div className="container" style={{ marginTop: "3rem" }}>
@@ -76,7 +64,7 @@ const DetailedPage = () => {
                 />
               </div>
               <div className="col-12 col-md-6">
-                <h3>{products.name}</h3>
+                <h3>{products.productName}</h3>
                 <p className="text-muted">Brand: {products.brandName}</p>
                 <div className="row">
                   <div className="col">
@@ -86,7 +74,7 @@ const DetailedPage = () => {
                     <p className="text-muted">Category: {products.category}</p>
                   </div>
                 </div>
-                <h4>Rs {currentPrice}</h4>
+                <h4>Rs {products.price}</h4>
                 <div className="row">
                   <div className="col-auto">
                     <span className="text-muted">

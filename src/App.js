@@ -8,6 +8,8 @@ import Products from './Products';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import SentimentAnalysis from './Components/Products/SentimentAnalysis';
 import SearchProducts from './Components/Products/SearchProducts';
+import PriceComparison from './Components/Products/PriceComparison';
+import ProductsComparison from './Components/Products/ProductsComparison';
 
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/sentiment' element = {<SentimentAnalysis />} />
           <Route path='/products' element = {<SearchProducts />} />
+          <Route path='/comparison' element = {<ProductsComparison />} />
         </Routes>
       </div>
       </>

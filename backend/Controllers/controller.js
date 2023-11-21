@@ -67,6 +67,41 @@ async function getCategoryWithSource(req, res) {
     }
 }
 
+async function searchAllProducts(req, res) {
+  try {
+    const searchQuery = req.params.searchQuery; // Assuming you pass the searchQuery in the request parameters
+    if (!searchQuery) {
+      res.status(400).json({ error: "searchQuery is required" });
+      return;
+    }
+    const mobiles = await productModel.searchAllProducts(searchQuery);
+    res.json(mobiles);
+  } catch (error) {
+    console.error("Error getting mobiles:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
+
+async function searchProductsCategoryWise(req, res){
+    try {
+        const searchQuery = req.params.searchQuery; // Assuming you pass the searchQuery in the request parameters
+        const source = req.params.source; // Assuming you pass the source in the request parameters
+        if (!searchQuery) {
+        res.status(400).json({ error: "searchQuery is required" });
+        return;
+        }
+        if (!source) {
+        res.status(400).json({ error: "source is required" });
+        return;
+        }
+        const mobiles = await productModel.searchProductsCategoryWise(searchQuery, source);
+        res.json(mobiles);
+    } catch (error) {
+        console.error("Error getting mobiles:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
 
 
 module.exports = {
@@ -74,4 +109,6 @@ module.exports = {
   getAllSourceProducts,
   getOneProduct,
   getCategoryWithSource,
+  searchAllProducts,
+  searchProductsCategoryWise,
 };

@@ -9,8 +9,9 @@ async function connectDatabase() {
   }
 
   try {
-    const uri = 'mongodb://localhost:27017/EzAccess'; // EzAccess database
-    client = new MongoClient(uri, { useUnifiedTopology: true });
+    //const uri = 'mongodb+srv://i192048:WUZjje1V97uoGFy6@ezaccess.c1degns.mongodb.net/EzAccess'; // EzAccess database
+    const uri = 'mongodb://localhost:27017/EzAccess'
+    client = new MongoClient(uri, {useNewUrlParser: true ,useUnifiedTopology: true });
     await client.connect();
     console.log('Database connected successfully.');
     return client;

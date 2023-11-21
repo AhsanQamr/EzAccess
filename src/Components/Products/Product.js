@@ -1,10 +1,10 @@
-// Product.js
+// // Product.js
 
-import React, { useEffect, useState } from "react";
-import module from "./Product.module.css";
-import ProductsList from "./ProductsList";
+import React, { useState, useEffect } from "react";
 import ProductsFilter from "./ProductsFilter";
-import ContainerCards from "../UI/Cards/ContainerCards";
+import ProductsList from "./ProductsList";
+import module from "./Product.module.css";
+import { TailSpin } from 'react-loader-spinner'
 
 const Product = (props) => {
   const categories = [
@@ -18,23 +18,26 @@ const Product = (props) => {
 
   const [activeCategory, setActiveCategory] = useState("All");
   const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Add a loading state
 
   const fetchProducts = async (category) => {
-
-    console.log(`Product.js ${props.category} with db name ${category}`)
+    setIsLoading(true); // Set loading state to true while fetching
 
     const apiUrl =
       category === "All"
         ? `http://localhost:8081/api/categories/${props.category}`
-        : `http://localhost:8081/api/categories/${props.category}/sources/${category}`
+        : `http://localhost:8081/api/categories/${props.category}/sources/${category}`;
+
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
       console.log(`${category} data:`, data);
       setDisplayedProducts(data);
-      setActiveCategory(category); // Update the active category after fetching
+      setActiveCategory(category);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false); // Set loading state to false after fetching
     }
   };
 
@@ -47,23 +50,17 @@ const Product = (props) => {
     fetchProducts(activeCategory);
   }, [activeCategory, props.category]);
 
-  var dataToSend = [];
+  let dataToSend = [];
+
   if (activeCategory === "Priceoye" && props.category === "Accessories") {
     dataToSend = displayedProducts.accessories;
     dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
-    console.log("dataToSend:", dataToSend);
-  }  else if (activeCategory === "Qmart" && props.category === "Mobiles") {
+  } else if (activeCategory === "Qmart" && props.category === "Mobiles") {
     dataToSend = displayedProducts.mobiles;
     dataToSend = Array.isArray(dataToSend) ? dataToSend : [];
-    console.log("dataToSend:", dataToSend);
-  }
-  
-  
-  else {
+  } else {
     dataToSend = Array.isArray(displayedProducts) ? displayedProducts : [];
   }
-
-  console.log("dataToSend:", dataToSend);
 
   return (
     <div className={module.product}>
@@ -77,11 +74,25 @@ const Product = (props) => {
         onCategoryChange={onCategoryChange}
       />
 
-
       <div className={module.container}>
-        <div className={module.product__cards}>
-          <ProductsList products={dataToSend} category={props.category} activeCategory = {activeCategory} />
-        </div>
+        {isLoading ? (
+        <div className={module.loaderContainer}>
+          <TailSpin
+            type="Puff" // Choose a loader type
+            color="#808080" // Set the loader color
+            height={50} // Set the loader height
+            width={50} // Set the loader width
+          />
+          </div>
+        ) : (
+          <div className={module.product__cards}>
+            <ProductsList
+              products={dataToSend}
+              category={props.category}
+              activeCategory={activeCategory}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

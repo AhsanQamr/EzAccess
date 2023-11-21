@@ -136,3 +136,11 @@
     text-decoration: none;
     color: #fff;
 }
+
+.__product__name{
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #fff;
+    user-select: none;
+    margin-left: 0%;
+}
