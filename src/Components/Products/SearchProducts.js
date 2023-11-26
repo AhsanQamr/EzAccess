@@ -30,6 +30,10 @@ function SearchProducts() {
     fetchRecommendedProducts();
   }, []); // Empty dependency array means this effect runs once after the initial render
 
+  // price filter
+  
+
+
   // Handler for search input change
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -98,8 +102,8 @@ function SearchProducts() {
             </button>
           </div>
         </form>
-
         {/* Filter buttons */}
+        
         {searchResults.length > 0 && (
           <div className="mt-3 text-center">
             {/* <span>Filter by Source:</span> */}
@@ -121,7 +125,7 @@ function SearchProducts() {
 
         {/* Search results */}
         <div
-          className="row row-cols-1 row-cols-md-3 g-3"
+          className="row row-cols-2 row-cols-md-3 g-3"
           style={{ marginTop: "20px" }}
         >
           {loading ? (
