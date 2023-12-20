@@ -19,7 +19,12 @@ const Header = () => {
 
 
 
+  const [likedProducts, setLikedProducts] = useState([]);
 
+  const handleLikedProduct = (product) => {
+    // Add the liked product to the list of liked products
+    setLikedProducts((prevLikedProducts) => [...prevLikedProducts, product]);
+  };
 
   return (
     <>
@@ -42,9 +47,10 @@ const Header = () => {
         </div>
         </Link>
         <div className="header__nav">
-          <div className="header__icon">
-            <i class="bi bi-bag-heart-fill"></i>
-          </div>
+        <div className="header__icon" onClick={() => console.log(likedProducts)}>
+        {/* Display liked products or cart icon */}
+
+      </div>
           <div className="header__option">
             <span
               className="header__optionLineOne"

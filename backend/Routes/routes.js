@@ -14,5 +14,8 @@ router.get('/search/:searchQuery', controller.searchAllProducts);
 // search route category wise
 router.get('/search/:searchQuery/sources/:source', controller.searchProductsCategoryWise);
 
+// get all products
+router.get('/allproducts', controller.getAllProducts);
+
 module.exports = router;
 

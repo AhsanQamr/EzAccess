@@ -102,6 +102,16 @@ async function searchProductsCategoryWise(req, res){
     }
 }
 
+async function getAllProducts(req, res){
+    try {
+        const mobiles = await productModel.getAllProducts();
+        res.json(mobiles);
+    } catch (error) {
+        console.error("Error getting mobiles:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
 
 
 module.exports = {
@@ -111,4 +121,5 @@ module.exports = {
   getCategoryWithSource,
   searchAllProducts,
   searchProductsCategoryWise,
+  getAllProducts
 };

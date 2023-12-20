@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import module from "./DetailedPage.module.css";
 import ProductDescription from "./ProductDescription";
+import SentimentDescription from "./SentimentDescription";
 
 const DetailedPage = () => {
   const { dbName, collectionName, productId } = useParams();
@@ -105,24 +106,10 @@ const DetailedPage = () => {
                 <hr style={{ marginTop: "1rem" }}></hr>
               </div>
               <div className="row">
-                <div className="col-10 mt-3">
+              <div className="col-10 mt-3">
                   <div className="rounded p-3 border bg-light">
                     <h4>Sentiment Scores:</h4>
-                    <ul>
-                      {Object.entries(products).map(([key, value], index) => {
-                        if (
-                          key === "SentimentScore" &&
-                          typeof value === "object"
-                        ) {
-                          return Object.entries(value).map(([label, score]) => (
-                            <li key={label}>
-                              {label}: {score}
-                            </li>
-                          ));
-                        }
-                        return null; // Handle cases where SentimentScore is not present or not an object
-                      })}
-                    </ul>
+                    <SentimentDescription sentiment={products.sentiment} />  
                   </div>
                 </div>
               </div>
@@ -191,6 +178,14 @@ const DetailedPage = () => {
                 <hr style={{ marginTop: "1rem" }}></hr>
               </div>
               <div className="row">
+
+                <div className="col-10 mt-3">
+                  <div className="rounded p-3 border bg-light">
+                    <h4>Sentiment Scores:</h4>
+                    <SentimentDescription sentiment={products.sentiment} />  
+                  </div>
+                </div>
+
                 <div className="col-10 mt-3">
                   <div className="rounded p-3 border bg-light">
                     <h4>
@@ -289,6 +284,7 @@ const DetailedPage = () => {
                                 <s>{products.prices[1]}</s>
                               </span>
                             </div>
+                            
                           </div>
                         </>
                       )}
@@ -349,37 +345,42 @@ const DetailedPage = () => {
             <div className="row">
               <div className="col-12 col-md-6">
                 <img
-                  src={products.Image}
+                  src={products.productImg}
                   alt={products.name}
                   className="img-fluid"
                   style={{ height: "20rem" }}
                 />
               </div>
               <div className="col-12 col-md-6">
-                <h3>{products.Title}</h3>
-                <p className="text-muted">Brand: {products.Brand}</p>
+                <h3>{products.productName}</h3>
+                <p className="text-muted">Brand: {products.brand}</p>
                 <div className="row">
                   <div className="col">
                     <p className="text-muted">Website: {dbName}</p>
                   </div>
                   <div className="col">
-                    <p className="text-muted">Category: {products.Category}</p>
+                    <p className="text-muted">Category: {products.category}</p>
                   </div>
                 </div>
                 <div>
-                  {products.Price && products.Price.length >= 1 ? (
+                  {products.price && products.price.length >= 1 ? (
                     <>
-                      {products.Price.length === 1 ? (
-                        <p>{products.Price[0]}</p>
+                      {products.price.length === 1 ? (
+                        <p>{products.price[0]}</p>
                       ) : (
                         <>
-                          <h4>{products.Price[0]}</h4>
+                          <h4>{products.price[0]}</h4>
                           <div className="row">
                             <div className="col-auto">
                               <span className="text-muted">
-                                <s>{products.Price[1]}</s>
+                                <s>{products.price[1]}</s>
                               </span>
                             </div>
+                            <div className="col-auto">
+                    <span className="text-success">
+                      <h6>{products.discount}</h6>
+                    </span>
+                  </div>
                           </div>
                         </>
                       )}
@@ -388,15 +389,11 @@ const DetailedPage = () => {
                     <p>No prices available</p>
                   )}
                 </div>
-                {/* <div className="col-auto">
-                    <span className="text-success">
-                      <h6>{products.discount}</h6>
-                    </span>
-                  </div> */}
+                
                 <button
                   className="btn btn-lg btn-dark"
                   style={{ marginTop: "2rem", padding: "0.5rem 9rem" }}
-                  onClick={() => window.open(products.Link)}
+                  onClick={() => window.open(products.productUrl)}
                 >
                   Visit Website
                 </button>
@@ -472,11 +469,11 @@ const DetailedPage = () => {
                     <p className="text-muted">Category: {products.category}</p>
                   </div>
                 </div>
-                <h4>{products.originalPrice}</h4>
+                <h4>{products.price}</h4>
                 <div className="row">
                   <div className="col-auto">
                     <span className="text-muted">
-                      <s>Rs{products.price}</s>
+                      <s>Rs{products.originalPrice}</s>
                     </span>
                   </div>
                   <div className="col-auto">

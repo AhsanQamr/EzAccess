@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import module from "./NormalCard.module.css";
 import no_img from "../../../Assets/no-image.png";
+import { Modal, Button } from 'react-bootstrap';
 
 const NormalCard = (props) => {
   let price = Math.floor(props.current_price);
@@ -99,14 +100,41 @@ const NormalCard = (props) => {
     Availibility = "-";
   }
 
-
+  
+  const [productDetails, setProductDetails] = useState({
+    name: '',
+    category: '',
+    // Add more details as needed
+  });
 
   const [isLiked, setIsLiked] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  // const handleLikeButton = () => {
+  //   setIsLiked(!isLiked);
+  //   // Fetch or set product details
+
+  // };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
+  const handleCardClick = () => {
+    // Show the popup when the card is clicked
+    setShowPopup(true);
+  };
 
   const handleLikeButton = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setIsLiked((prev) => !prev);
+
+    setProductDetails({
+      name: props.name,
+      category: props.category,
+      // Update other details
+    });
+    setShowPopup(true);
   };
 
   console.log(`currentCategory:${props.category}`)
@@ -161,9 +189,9 @@ const NormalCard = (props) => {
                     className={`${module.__like__button}  ${module.__btn}`}
                   >
                     {isLiked ? (
-                      <i class="bi bi-heart-fill"></i>
+                      <i class="bi bi-eye"></i>
                     ) : (
-                      <i class="bi bi-heart"></i>
+                      <i class="bi bi-eye"></i>
                     )}
                   </button>
                 </div>
@@ -172,8 +200,39 @@ const NormalCard = (props) => {
           </div>
         </div>
       </Link>
+
+      {/* Render the ProductPopup component when showPopup is true */}
+      {showPopup && (
+        <ProductPopup
+          productDetails={productDetails}
+          onClose={closePopup}
+        />
+      )}
     </>
   );
 };
+
+const ProductPopup = ({ productDetails, onClose }) => {
+  const { name, category } = productDetails;
+
+  return (
+    <Modal show={true} onHide={onClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Product Details</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>Name: {name}</p>
+        <p>Category: {category}</p>
+        {/* Display other product details */}
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={onClose}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+};
+
 
 export default NormalCard;

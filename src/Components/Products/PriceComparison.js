@@ -122,6 +122,37 @@ const PriceComparison = ({ product1, product2 }) => {
             </div>
           </div>
         </div>
+
+
+
+
+
+
+        <div className="col-md-12">
+          <div className="accordion" id="description_accordion_p1">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="description_heading_p1">
+                <button
+                  className={`accordion-button ${accordion1Open ? "" : "collapsed"}`}
+                  type="button"
+                  onClick={() => setAccordion1Open(!accordion1Open)}
+                >
+                  Sentiment - Product 1
+                </button>
+              </h2>
+              <div
+                id="description_collapse_p1"
+                className={`accordion-collapse collapse ${accordion1Open ? "show" : ""}`}
+                aria-labelledby="description_heading_p1"
+                data-bs-parent="#description_accordion_p1"
+              >
+                <div className="accordion-body">
+                  <p>{product1.sentiment}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Accordion for Product 2 description */}
@@ -150,6 +181,35 @@ const PriceComparison = ({ product1, product2 }) => {
               >
                 <div className="accordion-body">
                   <p>{product2.description}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div className="col-md-12">
+          <div className="accordion" id="description_accordion_p2">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="description_heading_p2">
+                <button
+                  className={`accordion-button ${accordion2Open ? "" : "collapsed"}`}
+                  type="button"
+                  onClick={() => setAccordion2Open(!accordion2Open)}
+                >
+                  Sentiment - Product 2
+                </button>
+              </h2>
+              <div
+                id="description_collapse_p2"
+                className={`accordion-collapse collapse ${accordion2Open ? "show" : ""}`}
+                aria-labelledby="description_heading_p2"
+                data-bs-parent="#description_accordion_p2"
+              >
+                <div className="accordion-body">
+                  <p>{product2.sentiment}</p>
                 </div>
               </div>
             </div>

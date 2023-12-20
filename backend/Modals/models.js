@@ -18,6 +18,21 @@ const productModel = {
     return products;
   },
 
+  getAllProducts: async() => {
+    const client = getDBConnection("EzAccess");
+    if (!client) {
+      throw new Error("Database connection not established");
+    }
+
+    const products = await client
+      .db()
+      .collection("products")
+      .find()
+      .toArray();
+
+    return products;
+  },
+
   getSourceWise: async (source) => {
     const client = getDBConnection("EzAccess");
     if (!client) {

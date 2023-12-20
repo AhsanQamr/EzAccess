@@ -114,29 +114,27 @@ const ProductsList = ({ products, category, activeCategory }) => {
         console.log("Qmart");
         console.log("item:", item);
 
-        const qmartPrices = item.Price || [];
+        const qmartPrices = item.price || [];
         let qcurrnt_price = "-";
         let qoriginal_price = "-";
         console.log("prices:", qmartPrices);
         
-        if (qmartPrices.length === 1) {
-          // If there is only one price in the array, consider it as the original price
-          qcurrnt_price = qmartPrices[0].split(":")[1]?.trim() || "-";
-        } else if (qmartPrices.length === 2) {
-          // If there are two prices, assume the first one is the current price and the second one is the original price
-          qcurrnt_price = qmartPrices[0].split(":")[1]?.trim() || "-";
-          qoriginal_price = qmartPrices[1].split(":")[1]?.trim() || "-";
-        }        
+        if (qmartPrices.length === 1){
+          qcurrnt_price = qmartPrices[0];
+        } else{
+          qcurrnt_price = qmartPrices[0];
+          qoriginal_price = qmartPrices[1];
+        }
 
         return(
           <NormalCard
             key={item._id}
             id={item._id}
-            name= {item.Title}
+            name= {item.productName}
             current_price={qcurrnt_price}
             original_price={qoriginal_price}
-            image={item.Image}
-            discount={""}
+            image={item.productImg}
+            discount={item.discount}
             category={item.category}
             source = {item.source}
             activeCategory={activeCategory}
